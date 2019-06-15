@@ -82,7 +82,7 @@ plt.savefig("Images/ride_share_scatter.png", bbox_inches="tight")
 plt.show()
 ```
 
-![ride_share_scatter_plot](Images/ride_share_data.png)
+![ride_share_scatter_plot](Images/ride_share_scatter.png)
 
 
 #### Pie Chart of Total Fares by City Type
@@ -109,4 +109,4 @@ plt.savefig("Images/total_fares_pie.png")
 plt.show()
 ```
 
-![total_fares_pie_chart](total_fares_pie.png)
+![total_fares_pie_chart](Images/total_fares_pie.png)
