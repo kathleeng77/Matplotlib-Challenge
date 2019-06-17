@@ -4,7 +4,9 @@ Matplotlib Challenge of Ride-Sharing Service Data
 
 
 ## Analysis
-
+* The highest percentages of fares, rides, and drivers are all in urban cities.
+* Rural cities have a wider range of average fares than the other types of cities.
+* Urban cities have a higher percentage of drivers than they have for rides. More data would allow us to look at whether or not urban cities have more drivers than are in demand.
 
 ## Breakdown
 
@@ -85,7 +87,7 @@ plt.show()
 ![ride_share_scatter_plot](Images/ride_share_scatter.png)
 
 
-#### Pie Chart of Total Fares by City Type
+#### Percent of Total Fares by City Type
 
 ```python
 # Calculate Type Percents
@@ -110,3 +112,53 @@ plt.show()
 ```
 
 ![total_fares_pie_chart](Images/total_fares_pie.png)
+
+
+#### Percent of Total Rides by City Type
+
+```python
+# Calculate Ride Percents
+total_rides = type_group["ride_id"].count()
+
+# Make Pie Chart
+fig, ax = plt.subplots()
+ax.pie(total_rides, labels=labels, explode=explode, colors=colors, autopct="%1.1f%%", shadow=True, startangle=150)
+ax.set_title("% of Total Rides by City Type")
+ax.set_aspect('auto')
+
+# Save Figure
+plt.savefig("Images/total_rides_pie.png")
+
+# Show plot
+plt.show()
+```
+
+![total_rides_pie_chart](Images/total_rides_pie.png)
+
+
+#### Percent of Total Drivers by City Type
+
+```python
+# Calculate Driver Percents
+city_type_group = city_df.groupby(["type"])
+total_drivers = city_type_group["driver_count"].sum()
+
+# Make Pie Chart
+fig, ax = plt.subplots()
+ax.pie(total_drivers, labels=labels, explode=explode, colors=colors, autopct="%1.1f%%", shadow=True, startangle=150)
+ax.set_title("% of Total Drivers by City Type")
+ax.set_aspect('auto')
+
+# Save Figure
+plt.savefig("Images/total_drivers_pie.png")
+
+# Show plot
+plt.show()
+```
+
+![total_drivers_pie_chart](Images/total_drivers_pie.png)
+
+
+#### Notes
+
+I was trying to find a way to alter the shapes of the pie charts. Mine were automatically oval which is what I thought they were supposed to be. However, when I was researching, I kept finding documentation stating that the automatic shape of the pie charts would be oval. I became very confused. I couldn't figure out how to change the shape of the pie charts from my automatic circles... until I came across 'fig, ax', 'ax.pie', 'ax.set_aspect' syntax. And sure enough 'auto' is an oval shape.
